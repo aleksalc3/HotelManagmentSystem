@@ -1,13 +1,14 @@
-﻿using HotelManagmnet.Domain.Common;
+﻿using HotelManagmnet.Domain;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelManagmnet.Domain
+namespace HotelManagementSystem.Application.Features.Booking.Commands.CreateBooking
 {
-    public class Booking:BaseEntity
+    public class UpdateBookingCommand :IRequest<Unit>
     {
         public User? User { get; set; }
         public int UserId { get; set; }
