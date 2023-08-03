@@ -4,5 +4,10 @@ namespace HotelManagementSystem.Application.Contracts.Persistence
 {
     public interface IBookingRepository : IGenericRepository<Booking>
     {
+        Task<List<Booking>> GetBookingsByDate(DateTime date);
+        Task<List<Booking>> GetUpcomingBookings();
+        Task<List<Booking>> GetPastReservations();
+        Task<decimal> GetBookingTotalAmount(int bookingId);
+        Task<bool> CancelBooking(int bookingId);
     }
 }

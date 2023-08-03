@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelManagementSystem.Application.Contracts.Logging;
 using HotelManagementSystem.Application.Contracts.Persistence;
 using HotelManagementSystem.Application.Exceptions;
 using HotelManagementSystem.Application.Features.Booking.Commands.UpdateBooking;
@@ -15,10 +16,12 @@ namespace HotelManagementSystem.Application.Features.Booking.Commands.CreateBook
     {
         private readonly IMapper _mapper;
         private readonly IBookingRepository _bookingRepository;
-        public UpdateBookingCommandHandler(IMapper mapper, IBookingRepository bookingRepository)
+        private readonly IAppLogger<UpdateBookingCommandHandler> _logger;
+        public UpdateBookingCommandHandler(IMapper mapper, IBookingRepository bookingRepository, IAppLogger<UpdateBookingCommandHandler> logger)
         {
             this._mapper = mapper;
             this._bookingRepository = bookingRepository;
+            this._logger = logger;
         }
         public async Task<Unit> Handle(UpdateBookingCommand request, CancellationToken cancellationToken)
         {
@@ -26,7 +29,11 @@ namespace HotelManagementSystem.Application.Features.Booking.Commands.CreateBook
             var validator = new UpdateBookingCommandValidator();
             var validationResult = await validator.ValidateAsync(request);
 
-            if (!validationResult.IsValid) throw new BadRequestException("Invalid Booking", validationResult);
+            if (!validationResult.IsValid)
+            {
+                _logger.LogWarning($"Validation errors in update request for {0} - {1}",nameof(Booking),request.Id);
+                throw new BadRequestException("Invalid Booking", validationResult);
+            } 
             //Convert to domain entity object
             var bookingToUpdate = _mapper.Map<HotelManagmnet.Domain.Booking>(request);
             //Add to database

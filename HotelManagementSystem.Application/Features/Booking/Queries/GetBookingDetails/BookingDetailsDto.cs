@@ -10,8 +10,8 @@ namespace HotelManagementSystem.Application.Features.Booking.Queries.GetAllBooki
     public class BookingDetailsDto
     {
         public int Id { get; set; }
-        public User? User { get; set; }
-        public int UserId { get; set; }
+        public Customer? Customer { get; set; }
+        public int CustomerId { get; set; }
         public Room? Room { get; set; }
         public int RoomId { get; set; }
         public DateTime DateCreated { get; set; }

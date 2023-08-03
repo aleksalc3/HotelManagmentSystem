@@ -17,7 +17,7 @@ namespace HotelManagment.Persistence.Configurations
                 new Booking
                 {
                     Id = 1,
-                    User = null,
+                    Customer = null,
                     Room = null,
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now,
