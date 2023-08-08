@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelManagementSystem.Application.Features.Booking.Commands.CreateBooking;
 using HotelManagementSystem.Application.Features.Booking.Queries.GetAllBookings;
 using HotelManagmnet.Domain;
 using System;
@@ -14,7 +15,20 @@ namespace HotelManagementSystem.Application.MappingProfiles
         public BookingProfile()
         {
             CreateMap<BookingsDto, Booking>().ReverseMap();
-            CreateMap<Booking, BookingDetailsDto>();
+            CreateMap<Booking, BookingDetailsDto>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer))
+                .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room));
+            CreateMap<CreateBookingCommand, Booking>()
+                .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
+                .ForMember(dest => dest.RoomId, opt => opt.MapFrom(src => src.RoomId))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
+            CreateMap<UpdateBookingCommand, Booking>()
+                .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
+                .ForMember(dest => dest.RoomId, opt => opt.MapFrom(src => src.RoomId))
+                .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate))
+                .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate));
+
         }
     }
 }

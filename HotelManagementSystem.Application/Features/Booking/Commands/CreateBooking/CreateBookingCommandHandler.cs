@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HotelManagementSystem.Application.Contracts.Persistence;
 using HotelManagementSystem.Application.Exceptions;
+using HotelManagementSystem.Application.Features.Booking.Queries.GetAllBookings;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,10 @@ namespace HotelManagementSystem.Application.Features.Booking.Commands.CreateBook
             //Validate incomnig data
             var validator = new CreateBookingCommandValidator();
             var validationResult = await validator.ValidateAsync(request);
-
+            
             if (!validationResult.IsValid) throw new BadRequestException("Invalid Booking", validationResult);
             //Convert to domain entity object
-            var bookingToCreate = _mapper.Map<HotelManagmnet.Domain.Booking>(request);
+            var bookingToCreate = _mapper.Map<CreateBookingCommand,HotelManagmnet.Domain.Booking>(request);
             //Add to database
             await _bookingRepository.CreateAsync(bookingToCreate);
             //return record id

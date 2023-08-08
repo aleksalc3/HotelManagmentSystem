@@ -35,7 +35,7 @@ namespace HotelManagementSystem.Application.Features.Booking.Commands.CreateBook
                 throw new BadRequestException("Invalid Booking", validationResult);
             } 
             //Convert to domain entity object
-            var bookingToUpdate = _mapper.Map<HotelManagmnet.Domain.Booking>(request);
+            var bookingToUpdate = _mapper.Map<UpdateBookingCommand, HotelManagmnet.Domain.Booking>(request);
             //Add to database
             await _bookingRepository.UpdateAsync(bookingToUpdate);
             //return record id

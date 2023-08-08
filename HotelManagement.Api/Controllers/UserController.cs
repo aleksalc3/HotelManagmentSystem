@@ -1,6 +1,6 @@
-﻿using HotelManagementSystem.Application.Features.Booking.Commands.CreateBooking;
-using HotelManagementSystem.Application.Features.Booking.Queries.GetAllBookings;
-using HotelManagementSystem.Application.Features.Booking.Queries.GetBookingDetails;
+﻿using HotelManagementSystem.Application.Features.User.Commands.CreateUser;
+using HotelManagementSystem.Application.Features.User.Queries.GetAllUsers;
+using HotelManagementSystem.Application.Features.User.Queries.GetUserDetails;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,61 +10,61 @@ namespace HotelManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public BookingController(IMediator mediator)
+        public UserController(IMediator mediator)
         {
             this._mediator = mediator;
         }
-        // GET: api/<BookingController>
+        // GET: api/<UserController>
         [HttpGet]
-        public async Task<List<BookingsDto>> Get()
+        public async Task<List<UserDto>> Get()
         {
-            var bookings = await _mediator.Send(new GetAllBookingsQuery());
-            return bookings;
+            var users = await _mediator.Send(new GetUsersQuery());
+            return users;
         }
 
-        // GET api/<BookingController>/5
+        // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public async Task<BookingDetailsDto> Get(int id)
+        public async Task<UserDetailsDto> Get(int id)
         {
-            var booking = await _mediator.Send(new GetBookingDetailsQuery(id));
-            return booking;
+            var user = await _mediator.Send(new GetUserDetailsQuery(id));
+            return user;
         }
 
-        // POST api/<BookingController>
+        // POST api/<UserController>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult> Post(CreateBookingCommand booking)
+        public async Task<ActionResult> Post(CreateUserCommand User)
         {
-            var response = await _mediator.Send(booking);
+            var response = await _mediator.Send(User);
             return CreatedAtAction(nameof(Get), new { id = response });
         }
 
-        // PUT api/<BookingController>/5
+        // PUT api/<UserController>/5
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Put(UpdateBookingCommand booking)
+        public async Task<ActionResult> Put(UpdateUserCommand User)
         {
-            await _mediator.Send(booking);
+            await _mediator.Send(User);
             return NoContent();
         }
         
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         [ProducesDefaultResponseType]
-        // DELETE api/<BookingController>/5
+        // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var command = new DeleteBookingCommand() { Id = id }; ;
+            var command = new DeleteUserCommand() { Id = id }; ;
             await _mediator.Send(command);
             return NoContent();
         }

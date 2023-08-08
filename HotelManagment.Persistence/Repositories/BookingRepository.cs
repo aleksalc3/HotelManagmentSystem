@@ -16,7 +16,13 @@ namespace HotelManagment.Persistence.Repositories
         {
 
         }
-
+        public async Task<Booking> GetBookingWithRoomAndCustomer(int bookingId)
+        {
+            var booking = await _context.Bookings.Include(b => b.Room)
+                .Include(b => b.Customer)
+                .FirstOrDefaultAsync(b => b.Id == bookingId);
+            return booking;
+        }
         public async Task<bool> CancelBooking(int bookingId)
         {
             var booking = await _context.Bookings.FindAsync(bookingId);

@@ -1,4 +1,6 @@
-﻿using HotelManagmnet.Domain;
+﻿using HotelManagementSystem.Application.Features.Customer.Queries.GetAllBookings;
+using HotelManagementSystem.Application.Features.Room.Queries.GetAllRooms;
+using HotelManagmnet.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +12,9 @@ namespace HotelManagementSystem.Application.Features.Booking.Queries.GetAllBooki
     public class BookingDetailsDto
     {
         public int Id { get; set; }
-        public Customer? Customer { get; set; }
-        public int CustomerId { get; set; }
-        public Room? Room { get; set; }
-        public int RoomId { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
+        public CustomerDto Customer { get; set; }       
+        public RoomDto Room { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }
