@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelManagment.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelManagement.Api", "HotelManagement.Api\HotelManagement.Api.csproj", "{AE0DC09C-5F26-4236-A5C0-F3ED28576FB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagementSystem.Application.UnitTests", "HotelManagementSystem.Application.UnitTests\HotelManagementSystem.Application.UnitTests.csproj", "{FCEDF84D-E678-4A31-9315-AA413C52D2DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{AE0DC09C-5F26-4236-A5C0-F3ED28576FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE0DC09C-5F26-4236-A5C0-F3ED28576FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE0DC09C-5F26-4236-A5C0-F3ED28576FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEDF84D-E678-4A31-9315-AA413C52D2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEDF84D-E678-4A31-9315-AA413C52D2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEDF84D-E678-4A31-9315-AA413C52D2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEDF84D-E678-4A31-9315-AA413C52D2DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{DD88FBA3-0045-4F7B-92E1-3A349437A13B} = {6770255E-8033-48A6-BCA8-1D29000C01EE}
 		{DCB655EC-2FCD-4F26-8A2A-633AE29A80B5} = {6770255E-8033-48A6-BCA8-1D29000C01EE}
 		{AE0DC09C-5F26-4236-A5C0-F3ED28576FB1} = {7C1347D8-96B8-49C0-A2FD-16C67313B595}
+		{FCEDF84D-E678-4A31-9315-AA413C52D2DD} = {E37315A7-87C3-41D4-B219-73B7D28F5714}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19FE742F-644D-4AF6-83B1-BFAB57DC4FC4}
