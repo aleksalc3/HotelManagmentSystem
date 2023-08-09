@@ -56,12 +56,11 @@ namespace HotelManagement.Api.Controllers
             await _mediator.Send(booking);
             return NoContent();
         }
-        
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
-        [ProducesDefaultResponseType]
         // DELETE api/<BookingController>/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        [ProducesDefaultResponseType]        
         public async Task<ActionResult> Delete(int id)
         {
             var command = new DeleteBookingCommand() { Id = id }; ;
