@@ -1,7 +1,7 @@
 ﻿using HotelManagementSystem.Application.Contracts.Identity;
 using HotelManagementSystem.Application.Exceptions;
-using HotelManagementSystem.Application.Identity.Models;
 using HotelManagementSystem.Application.Models.Identity;
+using HotelManagementSystem.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -9,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace HR.LeaveManagement.Identity.Services
+namespace HotelManagementSystem.Identity.Services
 {
     public class AuthService : IAuthService
     {

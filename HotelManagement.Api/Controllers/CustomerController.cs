@@ -4,6 +4,7 @@ using HotelManagementSystem.Application.Features.Customer.Commands.CreateCustome
 using HotelManagementSystem.Application.Features.Customer.Queries.GetAllBookings;
 using HotelManagementSystem.Application.Features.Customer.Queries.GetAllCustomers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,6 +13,7 @@ namespace HotelManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         private readonly IMediator _mediator;

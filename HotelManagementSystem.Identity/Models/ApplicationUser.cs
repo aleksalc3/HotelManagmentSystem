@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HotelManagementSystem.Application.Identity.Models
+namespace HotelManagementSystem.Identity.Models
 {
     public class ApplicationUser : IdentityUser
     {

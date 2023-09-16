@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HotelManagementSystem.Application\HotelManagementSystem.Application.csproj" />
+    <ProjectReference Include="..\HotelManagementSystem.Identity\HotelManagementSystem.Identity.csproj" />
     <ProjectReference Include="..\HotelManagment.Infrastructure\HotelManagment.Infrastructure.csproj" />
     <ProjectReference Include="..\HotelManagment.Persistence\HotelManagment.Persistence.csproj" />
   </ItemGroup>

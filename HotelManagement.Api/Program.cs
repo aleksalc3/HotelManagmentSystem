@@ -1,5 +1,6 @@
 using HotelManagement.Api.Middleware;
 using HotelManagementSystem.Application;
+using HotelManagementSystem.Identity;
 using HotelManagment.Infrastructure;
 using HotelManagment.Persistence;
 
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
-
+builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddAplicationServices();
 
 builder.Services.AddControllers();
@@ -40,6 +41,7 @@ app.UseCors(p => p.WithOrigins("http://localhost:3000")
  
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

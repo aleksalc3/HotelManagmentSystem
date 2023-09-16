@@ -1,12 +1,12 @@
 ﻿
 using HotelManagementSystem.Application.Contracts.Identity;
-using HotelManagementSystem.Application.Identity.Models;
 using HotelManagementSystem.Application.Models.Identity;
+using HotelManagementSystem.Identity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
-namespace HotelManagementSystem.Application.Identity.Services
+namespace HotelManagementSystem.Identity.Services
 {
     public class UserService : IUserService
     {
