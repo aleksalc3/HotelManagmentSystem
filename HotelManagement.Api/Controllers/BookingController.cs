@@ -69,5 +69,15 @@ namespace HotelManagement.Api.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+
+        [HttpGet("GetBookingsWithinDateRange")]
+        public async Task<List<BookingsWithinDateRangeDto>> GetBookingsWithinDateRange(string startDate, string endDate)
+        {
+            DateOnly startBookingDate = DateOnly.Parse(startDate);
+            DateOnly endBookingDate = DateOnly.Parse(endDate);
+            var bookings = await _mediator.Send(new GetBookingsWithinDataRangeQuery(startBookingDate, endBookingDate));
+           
+            return bookings;
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using HotelManagementSystem.Application.Contracts.Identity;
 using HotelManagementSystem.Application.Models.Identity;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.Api.Controllers
@@ -19,7 +18,12 @@ namespace HR.LeaveManagement.Api.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
         {
-            return Ok(await _authenticationService.Login(request));
+            AuthResponse response=await _authenticationService.Login(request);
+            Response.Cookies.Append("jwt",response.Token,new CookieOptions
+            { 
+                HttpOnly = true
+            });
+            return Ok(response);
         }
 
         [HttpPost("register")]

@@ -1,9 +1,11 @@
 ﻿using HotelManagementSystem.Application.Contracts.Persistence;
 using HotelManagment.Persistence.DatabaseContext;
 using HotelManagmnet.Domain;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +70,31 @@ namespace HotelManagment.Persistence.Repositories
             return await _context.Bookings
                 .Where(q => q.StartDate > currentDate)
                 .ToListAsync();
+        }
+
+        public async Task<List<Booking>> GetBookingsWithinDateRange(DateOnly startDate, DateOnly endDate)
+        {
+
+            var startDateParam = new SqlParameter("@StartDate", SqlDbType.Date)
+            {
+                Value = startDate,
+            };
+
+            var endDateParam = new SqlParameter("@EndDate", SqlDbType.Date)
+            {
+                Value = endDate,
+            };
+            var result = await _context.Database.ExecuteSqlRawAsync(
+                "EXEC GetBookingsWithinDateRange @StartDate, @EndDate",
+                startDateParam, endDateParam);
+
+            // Now manually load related entities (Customer and Room) and map to Booking entities
+            var bookings = _context.Bookings                
+                .Include(b => b.Customer)
+                .Include(b => b.Room)
+                .ToList();
+
+            return bookings;
         }
     }
 }

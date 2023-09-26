@@ -10,5 +10,7 @@ namespace HotelManagementSystem.Application.Contracts.Persistence
         Task<Booking> GetBookingWithRoomAndCustomer(int bookingId);
         Task<decimal> GetBookingTotalAmount(int bookingId);
         Task<bool> CancelBooking(int bookingId);
+
+        Task<List<Booking>> GetBookingsWithinDateRange(DateOnly startDate, DateOnly endDate);
     }
 }

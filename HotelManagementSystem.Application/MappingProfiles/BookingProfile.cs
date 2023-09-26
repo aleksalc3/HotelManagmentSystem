@@ -18,6 +18,10 @@ namespace HotelManagementSystem.Application.MappingProfiles
             CreateMap<Booking, BookingDetailsDto>()
                 .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer))
                 .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room));
+            CreateMap<Booking, BookingsWithinDateRangeDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Customer.Name))
+                .ForMember(dest => dest.RoomNumber, opt => opt.MapFrom(src => src.Room.RoomNumber))
+                .ForMember(dest => dest.IsAvailable, opt => opt.MapFrom(src => src.Room.IsAvailable));
             CreateMap<CreateBookingCommand, Booking>()
                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
                 .ForMember(dest => dest.RoomId, opt => opt.MapFrom(src => src.RoomId))
