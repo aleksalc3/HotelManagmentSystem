@@ -8,6 +8,7 @@ namespace HotelManagementSystem.Application.Contracts.Persistence
 
         Task MarkRoomAsAvailable(int roomId);
         Task<List<Room>> GetRoomsByType(string type);
+        Task<List<Room>> GetAvailableRoomsByBookings(DateTime checkInDate, DateTime checkOutDate);
         Task<List<Room>> GetAvailableRooms(DateTime checkInDate, DateTime checkOutDate);
         Task<int> GetRoomCapacity(int roomId);
 

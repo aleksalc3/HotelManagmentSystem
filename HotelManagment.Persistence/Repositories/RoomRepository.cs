@@ -11,8 +11,8 @@ namespace HotelManagment.Persistence.Repositories
         {
 
         }
-
-        public async Task<List<Room>> GetAvailableRooms(DateTime checkInDate, DateTime checkOutDate)
+        //First Version
+        public async Task<List<Room>> GetAvailableRoomsByBookings(DateTime checkInDate, DateTime checkOutDate)
         {
             var reserverRoomsIds= _context.Bookings
                 .Where(q=>q.StartDate< checkOutDate && q.EndDate>checkInDate)
@@ -20,7 +20,13 @@ namespace HotelManagment.Persistence.Repositories
                 .ToList();
             return await _context.Rooms.Where(q=>q.IsAvailable && !reserverRoomsIds.Contains(q.Id)).ToListAsync();
         }
-
+        //Second Version
+        public async Task<List<Room>> GetAvailableRooms(DateTime checkInDate, DateTime checkOutDate)
+        {
+            var availableRooms = await _context.Rooms
+                .Where(r => r.IsAvailable).ToListAsync();
+            return availableRooms;
+        }
         public async Task<int> GetRoomCapacity(int roomId)
         {
             var room = await _context.Rooms.FindAsync(roomId);
